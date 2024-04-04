@@ -46,6 +46,6 @@ npm run start
 
 To use the project, open http://localhost:8000/api-docs
 
-<!-- ## Documentation
+## Live link
 
-The API documentation is available at. -->
+Deployed here: https://carbon-cell-assignment-production.up.railway.app/
