@@ -9,6 +9,13 @@ const fetchPublicAPIs = asyncHandler(async (req, res) => {
 
   //   console.log("Category: ", category);
 
+  // Edge cases handling:
+
+  // if page<0 or limit<0, throws an error [Bad Request]
+  // if page==0, return the contents of first page i.e., page=1
+  // if limit==0, return no data
+  // if limit > total entries, return all the entries. Ignore page number and don't throw an error
+
   if (page === 0) page = 1;
   if (page < 0 || limit < 0) {
     throw new ApiError(400, "Bad Request");
