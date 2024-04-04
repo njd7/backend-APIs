@@ -7,8 +7,6 @@ const fetchPublicAPIs = asyncHandler(async (req, res) => {
   const { category } = req.query;
   let { page = 1, limit = 10 } = req.query;
 
-  //   console.log("Category: ", category);
-
   // Edge cases handling:
 
   // if page<0 or limit<0, throws an error [Bad Request]
