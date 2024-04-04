@@ -17,6 +17,10 @@ const swaggerOptions = {
       version: "1.0.0",
       description:
         "API documentation for user authentication, checking secured routes, retrieving public APIs data through filtering ",
+      contact: {
+        name: "Nayan Jyoti Das",
+        email: "nayandas.work@gmail.com",
+      },
     },
     servers: [
       {

@@ -49,3 +49,8 @@ To use the project, open http://localhost:8000/api-docs
 ## Live link
 
 Deployed here: https://carbon-cell-assignment-production.up.railway.app/
+
+## Author
+
+- **Nayan Jyoti Das**
+  - Email: nayandas.work@gmail.com
