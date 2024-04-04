@@ -27,6 +27,9 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 // console.log("Swagger specs: ", swaggerDocs);
+app.get("/", (req, res) => {
+  res.send("<h1>Carbon cell assignment</h1><h2>Please go to /api-docs to assess swagger documentation</h2>");
+});
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // middlewares
