@@ -42,9 +42,10 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 import userRouter from "./routes/user.routes.js";
 import miscRouter from "./routes/misc.routes.js";
 import { getCurrentUser } from "./controllers/user.controller.js";
+import { verifyJWT } from "./middlewares/auth.middleware.js";
 
 // routes declaration
-app.get("/current-user", getCurrentUser);
+app.get("/current-user", verifyJWT, getCurrentUser);
 app.use("/api/v1/users", userRouter); // Task 1: Implement User Authentication with JWT. Check userRoutes.
 app.use("/api/v1/misc", miscRouter); // Task 2, 4, 5
 // app.get("/api/v1/secured-page", verifyJWT, securedTest); // Task 4: Secure API Endpoint for Authenticated Users Only
