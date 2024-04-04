@@ -148,18 +148,18 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     const decodedRefreshTokenFE = jwt.verify(refreshTokenFE, process.env.REFRESH_TOKEN_SECRET);
 
     if (!decodedRefreshTokenFE) {
-      throw new ApiError(401, "Invalid refresh token 1");
+      throw new ApiError(401, "Invalid refresh token");
     }
 
     const user = await User.findById(decodedRefreshTokenFE?._id).select("-password");
     // console.log("User: \n\n", user);
     if (!user) {
-      throw new ApiError(401, "Invalid refresh token 2");
+      throw new ApiError(401, "Invalid refresh token");
     }
 
     if (refreshTokenFE !== user?.refreshToken) {
       // console.log(refreshTokenFE, "\n\n", user?.refreshToken);
-      throw new ApiError(401, "Invalid refresh token 3");
+      throw new ApiError(401, "Invalid refresh token");
     }
 
     const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
