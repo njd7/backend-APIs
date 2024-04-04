@@ -26,7 +26,7 @@ const swaggerOptions = {
 };
 
 // middlewares
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: false })); // for whitelisting origins that can access backend server
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true })); // for whitelisting origins that can access backend server
 app.use(express.json({ limit: "16kb" })); // to accept json data, max limit=16kb
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cookieParser()); // to access and also set the user's browsers cookies, i.e perform CRUD operations on cookies
@@ -41,11 +41,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // routes import
 import userRouter from "./routes/user.routes.js";
 import miscRouter from "./routes/misc.routes.js";
-import { getCurrentUser } from "./controllers/user.controller.js";
-import { verifyJWT } from "./middlewares/auth.middleware.js";
 
 // routes declaration
-app.get("/current-user", verifyJWT, getCurrentUser);
 app.use("/api/v1/users", userRouter); // Task 1: Implement User Authentication with JWT. Check userRoutes.
 app.use("/api/v1/misc", miscRouter); // Task 2, 4, 5
 // app.get("/api/v1/secured-page", verifyJWT, securedTest); // Task 4: Secure API Endpoint for Authenticated Users Only
