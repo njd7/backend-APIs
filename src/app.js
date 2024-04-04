@@ -17,7 +17,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: `http://${process.env.RAILWAY_PUBLIC_DOMAIN}/api/v1` || "http://localhost:8000/api/v1",
+        url: `https://${process.env.RAILWAY_PUBLIC_DOMAIN}/api/v1` || "http://localhost:8000/api/v1",
         description: "Server",
       },
     ],
