@@ -26,7 +26,7 @@ const swaggerOptions = {
 };
 
 // middlewares
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true })); // for whitelisting origins that can access backend server
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: false })); // for whitelisting origins that can access backend server
 app.use(express.json({ limit: "16kb" })); // to accept json data, max limit=16kb
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cookieParser()); // to access and also set the user's browsers cookies, i.e perform CRUD operations on cookies
