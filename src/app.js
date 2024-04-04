@@ -25,18 +25,18 @@ const swaggerOptions = {
   apis: ["./src/routes/*.js"], // Path to the API routes
 };
 
+// middlewares
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true })); // for whitelisting origins that can access backend server
+app.use(express.json({ limit: "16kb" })); // to accept json data, max limit=16kb
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(cookieParser()); // to access and also set the user's browsers cookies, i.e perform CRUD operations on cookies
+
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 // console.log("Swagger specs: ", swaggerDocs);
 app.get("/", (req, res) => {
   res.send("<h1>Carbon cell assignment</h1><h2>Please go to /api-docs to access swagger documentation</h2>");
 });
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-// middlewares
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true })); // for whitelisting origins that can access backend server
-app.use(express.json({ limit: "16kb" })); // to accept json data, max limit=16kb
-app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-app.use(cookieParser()); // to access and also set the user's browsers cookies, i.e perform CRUD operations on cookies
 
 // routes import
 import userRouter from "./routes/user.routes.js";
