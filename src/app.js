@@ -5,6 +5,9 @@ import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
 const app = express();
+const serverURL = process.env.RAILWAY_PUBLIC_DOMAIN
+  ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}/api/v1`
+  : "http://localhost:8000/api/v1";
 
 const swaggerOptions = {
   swaggerDefinition: {
@@ -17,7 +20,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: `https://${process.env.RAILWAY_PUBLIC_DOMAIN}/api/v1` || "http://localhost:8000/api/v1",
+        url: serverURL,
         description: "Server",
       },
     ],
@@ -44,7 +47,7 @@ import miscRouter from "./routes/misc.routes.js";
 
 // routes declaration
 app.use("/api/v1/users", userRouter); // Task 1: Implement User Authentication with JWT. Check userRoutes.
-app.use("/api/v1/misc", miscRouter); // Task 2, 4, 5
+app.use("/api/v1/", miscRouter); // Task 2, 4, 5
 // app.get("/api/v1/secured-page", verifyJWT, securedTest); // Task 4: Secure API Endpoint for Authenticated Users Only
 // app.get("/api/v1/publicapis", fetchPublicAPIs); // Task 2: Create API Endpoints for Data Retrieval
 // app.get("/api/v1/etherium/balance/:address", ethereumAccount); // Task 5: Retrieve Ethereum Account Balance with web3.js

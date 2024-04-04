@@ -12,7 +12,7 @@ const router = Router();
  *   name: Authentication
  *   description: Endpoints related to user authentication and authorization
  *
- * /misc/secured-page:
+ * /secured-page:
  *   get:
  *     summary: Get secured content
  *     tags: [Authentication]
@@ -32,7 +32,7 @@ router.route("/secured-page").get(verifyJWT, securedTest);
  *   name: PublicAPI
  *   description: Endpoints for fetching public APIs
  *
- * /misc/publicapis:
+ * /publicapis:
  *   get:
  *     summary: Fetch public APIs
  *     tags: [PublicAPI]
@@ -68,7 +68,7 @@ router.route("/publicapis").get(fetchPublicAPIs);
  *   name: Ethereum
  *   description: Endpoints for interacting with Ethereum blockchain
  *
- * /misc/etherium/balance/{address}:
+ * /etherium/balance/{address}:
  *   get:
  *     summary: Get Ethereum account balance
  *     tags: [Ethereum]

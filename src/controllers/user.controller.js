@@ -3,31 +3,13 @@ import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
-
-const generateAccessAndRefreshTokens = async (userId) => {
-  try {
-    const user = await User.findById(userId);
-    const accessToken = user.generateAccessToken();
-    const refreshToken = user.generateRefreshToken();
-
-    user.refreshToken = refreshToken;
-
-    // console.log("Generated refresh token: ", refreshToken);
-    await user.save({ validateBeforeSave: false });
-    return { accessToken, refreshToken };
-  } catch (error) {
-    throw new ApiError(500, "Something went wrong while generation refresh and access tokens");
-  }
-};
+import { generateAccessAndRefreshTokens } from "../utils/jwtHelper.js";
 
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, fullName, password } = req.body;
 
   // validation for not empty
-  // console.log("username: ", username);
-  // console.log("email: ", email);
-  // console.log("fullName: ", fullName);
-  // console.log("password: ", password);
+
   if ([username, email, fullName, password].some((field) => !field || field?.trim() === "")) {
     throw new ApiError(400, "All fields are required!");
   }
