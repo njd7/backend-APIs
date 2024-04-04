@@ -12,7 +12,7 @@ const router = Router();
  *   name: Authentication
  *   description: Endpoints related to user authentication and authorization
  *
- * /secured-page:
+ * /misc/secured-page:
  *   get:
  *     summary: Get secured content
  *     tags: [Authentication]
