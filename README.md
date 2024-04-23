@@ -1,4 +1,4 @@
-# Carbon Cell Assignment
+# Backend APIs
 
 ## Description
 
@@ -18,14 +18,14 @@ To install and run the project locally, follow these steps:
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/njd7/carbon-cell-assignment
+git clone https://github.com/njd7/backend-APIs
 
 ```
 
 2. Navigate to the project directory:
 
 ```sh
-cd carbon-cell-assignment
+cd backend-APIs
 ```
 
 3. Install dependencies:
